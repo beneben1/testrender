@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Show all</h1>
+<p class="important">
+<div style="margin-left: 100px;">
+    {{msg}}
+    {% for n in res %}
+    <li><button><a href='/showall/{{n[0]}}'>del {{ n[1]}}</a> </button>
+        <button onclick="upd('{{n[0]}}')">upd {{ n[1]}} </button> {{loop.index -1}} - Name:{{ n[1]}},{{
+        n[2]}},{{ n[3]}}
+    </li>
+    {% endfor %}
+</div>
+<hr>
+<form method="POST">
+    <div><label>name: <input type="text" id="stuName" name="stuName" value="jo"></label></div>
+    <div><label>Age: <input type="text" id="stuAge" name="stuAge" value="18"></label></div>
+    <div><label>Email: <input type="text" id="stuEmail" name="stuEmail" value="aa@aa.com"></label></div>
+</form>
+<script>
+    const upd = (id) => {
+        console.log(stuName.value);
+        console.log(stuAge.value);
+        console.log(stuEmail.value);
+        axios.post('/showall', {
+            id,
+            stuName: stuName.value,
+            stuAge: stuAge.value,
+            stuEmail: stuEmail.value,
+        }).then((response) => {
+            console.log(response);
+        });
+    }
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Add new student</h1>
+<p class="important">
+    {{msg}}
+<form method="POST">
+    <div><label>name: <input type="text" name="stuName"></label></div>
+    <div><label>Age: <input type="text" name="stuAge"></label></div>
+    <div><label>Email: <input type="text" name="stuEmail"></label></div>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
